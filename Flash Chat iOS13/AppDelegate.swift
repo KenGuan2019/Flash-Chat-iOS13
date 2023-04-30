@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        print(db)
+        //When using keyboard, the text field and send button will automatic show upper according to the size of keyboard
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        //The keyboard will disappear if touch outside the keyboard
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         return true
     }
 
